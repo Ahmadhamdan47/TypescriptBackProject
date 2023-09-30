@@ -1,0 +1,165 @@
+  {
+    "development": {
+      "databaseConfig": {
+        "host": "localhost",
+        "username": "sa", 
+        "password": "***PWD***",
+        "database": "XtVisionConfig_dev",
+        "dialect": "mssql",
+        "pool": {
+          "max": 5,
+          "min": 0,
+          "acquire": 30000,
+          "idle": 10000
+        },
+        "dialectOptions": {
+          "options": {
+            "instanceName": "XTVISION"
+          }
+        }
+      },
+      "databaseExploit": {
+        "host": "localhost",
+        "username": "sa",
+        "password": "***PWD***",
+        "database": "XtVisionExploit_dev",
+        "dialect": "mssql",
+        "pool": {
+          "max": 5,
+          "min": 0,
+          "acquire": 30000,
+          "idle": 10000
+        },
+        "dialectOptions": {
+          "options": {
+            "instanceName": "XTVISION"
+          }
+        }
+      },
+      "databaseSystem":{
+        "host": "localhost",
+        "username": "sa",
+        "password": "***PWD***",
+        "database": "XtVisionSystem_dev",
+        "dialect": "mssql",
+        "pool": {
+          "max": 5,
+          "min": 0,
+          "acquire": 30000,
+          "idle": 10000
+        },
+        "dialectOptions": {
+          "options": {
+            "instanceName": "XTVISION"
+          }
+        }
+      }
+    },
+    "test": {
+      "databaseConfig": {
+        "host": "localhost",
+        "username": "sa",
+        "password": "***PWD***",
+        "database": "XtVisionConfig_test",
+        "dialect": "mssql",
+        "pool": {
+          "max": 5,
+          "min": 0,
+          "acquire": 30000,
+          "idle": 10000
+        },
+        "dialectOptions": {
+          "options": {
+            "instanceName": "XTVISION"
+          }
+        }
+      },
+      "databaseExploit": {
+        "host": "localhost",
+        "username": "sa",
+        "password": "***PWD***",
+        "database": "XtVisionExploit_test",
+        "dialect": "mssql",
+        "pool": {
+          "max": 5,
+          "min": 0,
+          "acquire": 30000,
+          "idle": 10000
+        },
+        "dialectOptions": {
+          "options": {
+            "instanceName": "XTVISION"
+          }
+        }
+      },
+      "databaseSystem":{
+        "host": "localhost",
+        "username": "sa",
+        "password": "***PWD***",
+        "database": "XtVisionSystem_test",
+        "dialect": "mssql",
+        "pool": {
+          "max": 5,
+          "min": 0,
+          "acquire": 30000,
+          "idle": 10000
+        },
+        "dialectOptions": {
+          "options": {
+            "instanceName": "XTVISION"
+          }
+        }
+        }
+      },
+    
+    "production": {
+      "databaseConfig": {
+        "host": "localhost",
+        "database": "XtVisionConfig",
+        "dialect": "mssql",
+        "pool": {
+          "max": 5,
+          "min": 0,
+          "acquire": 30000,
+          "idle": 10000
+        },
+        "dialectOptions": {
+          "options": {
+            "instanceName": "XTVISION"
+          }
+        }
+      },
+      "databaseExploit": {
+        "host": "localhost",
+        "database": "XtVisionExploit",
+        "dialect": "mssql",
+        "pool": {
+          "max": 5,
+          "min": 0,
+          "acquire": 30000,
+          "idle": 10000
+        },
+        "dialectOptions": {
+          "options": {
+            "instanceName": "XTVISION"
+          }
+        }
+      },
+      "databaseSystem":{
+        "host": "localhost",
+        "database": "XtVisionSystem",
+        "dialect": "mssql",
+        "pool": {
+          "max": 5,
+          "min": 0,
+          "acquire": 30000,
+          "idle": 10000
+        },
+        "dialectOptions": {
+          "options": {
+            "instanceName": "XTVISION"
+          }
+        }
+        }
+      }
+    }

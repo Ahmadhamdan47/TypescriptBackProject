@@ -1,0 +1,22 @@
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .list-header-elem {
+    display: flex;
+    font-weight: bold;
+    width: 20%;
+  }
+
+  .sort-icon {
+    display: inline-block;
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+
+  .sort-icon-desc {
+    transform: rotate(-180deg);
+    transition-duration: 200ms;
+  }
+}

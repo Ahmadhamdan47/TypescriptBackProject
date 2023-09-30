@@ -1,0 +1,17 @@
+// This file overrides Bootstrap variables to match the design of the app.
+
+// Import Bootstrap
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+$castel: #0060a9;
+
+$custom-colors: (
+  "castel": $castel,
+);
+
+// Override Bootstrap variables
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "~bootstrap/scss/bootstrap";

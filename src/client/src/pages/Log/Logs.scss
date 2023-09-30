@@ -1,0 +1,10 @@
+.logs-container {
+  display: flex;
+  flex-direction: column;
+
+  .logs-list-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

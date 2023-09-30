@@ -1,0 +1,63 @@
+@import "../../styles/main-style.scss";
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logs-container {
+  @include flex-center;
+
+  .logs-list-container {
+    display: flex;
+    flex-direction: column;
+
+    .actions-onCheckbox-container {
+      display: flex;
+      align-items: start;
+      .buttons-actions {
+        display: flex;
+      }
+    }
+
+    .card-title-container {
+      @include flex-center;
+      justify-content: space-between;
+
+      h1 {
+        margin-left: 10px;
+        color: white;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        font-size: 1rem;
+      }
+    }
+    .card-content-container {
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      &:hover {
+        opacity: 1;
+      }
+      h2 {
+        color: white;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        font-size: 0.8rem;
+      }
+    }
+
+    .actions-logs-container {
+      @include flex-center;
+
+      .actions-logs {
+        font-size: 1.25em;
+        margin: 10px;
+        color: white;
+      }
+      .actions-logs:hover {
+        transform: scale(1.25);
+      }
+    }
+  }
+}

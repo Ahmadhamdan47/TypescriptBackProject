@@ -1,0 +1,6462 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "XTVision server",
+    "description": "All XTVsion server apis",
+    "version": "1.0.0"
+  },
+  "host": "localhost:5001",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {},
+  "paths": {
+    "/home/": {
+      "post": {
+        "tags": [
+          "HOME"
+        ],
+        "summary": "Get datas for the user connected to show pages allowed",
+        "description": "",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "type": "string",
+            "description": "code from OAuth2"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned datas for the user connected to show pages allowed",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "access_token": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "refresh_token": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "id_token": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "username": {
+                  "type": "string",
+                  "example": "username"
+                },
+                "language": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "time_zone": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "features": {
+                  "type": "array",
+                  "example": [
+                    "string"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "access_token",
+                "username",
+                "language",
+                "time_zone",
+                "features"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "HOME"
+        ],
+        "summary": "User logout",
+        "description": "",
+        "parameters": [
+          {
+            "name": "headers",
+            "in": "headers",
+            "type": "string",
+            "description": "headers from OAuth2"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/home/subscribeSystems": {
+      "post": {
+        "tags": [
+          "HOME"
+        ],
+        "summary": "At start, reconnect systems and init Web Socket connection to systems if they exist (to get events)",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/home/refreshToken/{refreshToken}": {
+      "get": {
+        "tags": [
+          "HOME"
+        ],
+        "summary": "Get new tokens from refresh token for the user connected",
+        "description": "",
+        "parameters": [
+          {
+            "name": "refreshToken",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "refresh token from OAuth2"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get new tokens from refresh token for the user connected",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "access_token": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "refresh_token": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "id_token": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "access_token"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/home/*": {
+      "get": {
+        "tags": [
+          "HOME"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/logs/": {
+      "get": {
+        "tags": [
+          "LOGS"
+        ],
+        "summary": "get a list of log filenames",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/logs/file/{name}": {
+      "get": {
+        "tags": [
+          "LOGS"
+        ],
+        "summary": "download file by name",
+        "description": "",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "log file name"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/logs/all": {
+      "get": {
+        "tags": [
+          "LOGS"
+        ],
+        "summary": "download all files",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "LOGS"
+        ],
+        "summary": "delete all files",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/logs/files/{fileNames}": {
+      "get": {
+        "tags": [
+          "LOGS"
+        ],
+        "summary": "create zip archive with selected files, then download it and delete it on success",
+        "description": "",
+        "parameters": [
+          {
+            "name": "fileNames",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "log file names"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/logs/files/{names}": {
+      "delete": {
+        "tags": [
+          "LOGS"
+        ],
+        "summary": "delete file by name",
+        "description": "",
+        "parameters": [
+          {
+            "name": "names",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "fileNames",
+            "in": "path",
+            "type": "string",
+            "description": "file names",
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/ad": {
+      "get": {
+        "tags": [
+          "USERS"
+        ],
+        "summary": "get all users from active directory",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned users from active directory",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "dn": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "userPrincipalName": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "sAMAccountName": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "sn": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "givenName": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "cn": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "displayName": {
+                    "type": "string",
+                    "example": "string"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/": {
+      "get": {
+        "tags": [
+          "USERS"
+        ],
+        "summary": "get all users",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned users",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "xtvision"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Default user"
+                  },
+                  "language": {
+                    "type": "string",
+                    "example": "fr"
+                  },
+                  "time_zone": {
+                    "type": "string",
+                    "example": "UTC+1"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "example": "2022-08-05T10:04:24.651Z"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "example": "2022-08-05T10:04:24.651Z"
+                  },
+                  "Roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "Exploitation"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ]
+                    }
+                  },
+                  "ManagementAreas": {
+                    "type": "array",
+                    "example": [],
+                    "items": {}
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "language",
+                  "time_zone",
+                  "createdAt",
+                  "updatedAt"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "USERS"
+        ],
+        "summary": "Create a user",
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "user to create",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "language": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "time_zone": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "name",
+                "language",
+                "time_zone"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "xtvision"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Default user"
+                },
+                "language": {
+                  "type": "string",
+                  "example": "fr"
+                },
+                "time_zone": {
+                  "type": "string",
+                  "example": "UTC+1"
+                },
+                "roleIds": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "dashboardIds": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "managementAreaIds": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "language",
+                "time_zone"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "USERS"
+        ],
+        "summary": "get specific user by id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "user ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned user by id",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "xtvision"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Default user"
+                },
+                "language": {
+                  "type": "string",
+                  "example": "fr"
+                },
+                "time_zone": {
+                  "type": "string",
+                  "example": "UTC+1"
+                },
+                "createdAt": {
+                  "type": "string",
+                  "example": "2022-08-05T10:04:24.651Z"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "example": "2022-08-05T10:04:24.651Z"
+                },
+                "Roles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "Exploitation"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ]
+                  }
+                },
+                "ManagementAreas": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "language",
+                "time_zone",
+                "createdAt",
+                "updatedAt"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "USERS"
+        ],
+        "summary": "Update a user",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "user ID."
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "user to update",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "password": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "language": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "time_zone": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "USERS"
+        ],
+        "summary": "delete one user by id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "user ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/filter": {
+      "post": {
+        "tags": [
+          "USERS"
+        ],
+        "summary": "Get users by filter",
+        "description": "",
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "body",
+            "description": "filter users by",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "roles": {
+                  "type": "array",
+                  "example": [
+                    "string"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned users",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "xtvision"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Default user"
+                  },
+                  "language": {
+                    "type": "string",
+                    "example": "fr"
+                  },
+                  "time_zone": {
+                    "type": "string",
+                    "example": "UTC+1"
+                  },
+                  "roleIds": {
+                    "type": "array",
+                    "example": [
+                      1,
+                      2
+                    ],
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "dashboardIds": {
+                    "type": "array",
+                    "example": [
+                      1,
+                      2
+                    ],
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "managementAreaIds": {
+                    "type": "array",
+                    "example": [
+                      1,
+                      2
+                    ],
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "language",
+                  "time_zone"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/linkRoles": {
+      "post": {
+        "tags": [
+          "USERS"
+        ],
+        "summary": "link a user with n roles",
+        "description": "",
+        "parameters": [
+          {
+            "name": "NewRoleUser",
+            "in": "body",
+            "description": "role id and user id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "RoleId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "UserId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "RoleId",
+                  "UserId"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/linkDashboards": {
+      "post": {
+        "tags": [
+          "USERS"
+        ],
+        "summary": "link a user with n dashboards",
+        "description": "",
+        "parameters": [
+          {
+            "name": "NewDashboardUser",
+            "in": "body",
+            "description": "dashboard id and user id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "DashboardId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "UserId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "DashboardId",
+                  "UserId"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/linkManagementAreas": {
+      "post": {
+        "tags": [
+          "USERS"
+        ],
+        "summary": "link a user with n managementAreas",
+        "description": "",
+        "parameters": [
+          {
+            "name": "linkManagementAreaUser",
+            "in": "body",
+            "description": "managementArea id and user id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ManagementAreaId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "UserId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "ManagementAreaId",
+                  "UserId"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/linkCategory": {
+      "post": {
+        "tags": [
+          "USERS"
+        ],
+        "summary": "link a user with n categories",
+        "description": "",
+        "parameters": [
+          {
+            "name": "linkCategoryUser",
+            "in": "body",
+            "description": "category id and user id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "CategoryId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "UserId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "CategoryId",
+                  "UserId"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/features/": {
+      "get": {
+        "tags": [
+          "FEATURES"
+        ],
+        "summary": "get all features",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned features",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "feature"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "description"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/features/filter": {
+      "post": {
+        "tags": [
+          "FEATURES"
+        ],
+        "summary": "get features by filter",
+        "description": "",
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "body",
+            "description": "filter features by rolename and username",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "rolename": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned features with filter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "feature"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "description"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/features/linkRoles": {
+      "post": {
+        "tags": [
+          "FEATURES"
+        ],
+        "summary": "link feature to n roles",
+        "description": "",
+        "parameters": [
+          {
+            "name": "NewRoleRole",
+            "in": "body",
+            "description": "feature id and role id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "FeatureId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "RoleId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "FeatureId",
+                  "RoleId"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/dashboards/": {
+      "get": {
+        "tags": [
+          "DASHBOARDS"
+        ],
+        "summary": "get all dashboards",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned dashboards",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "dashboard 1"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Default dashboard"
+                  },
+                  "layout": {
+                    "type": "string",
+                    "example": "JSON"
+                  },
+                  "widgets": {
+                    "type": "string",
+                    "example": "JSON"
+                  },
+                  "userId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "layout",
+                  "widgets"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DASHBOARDS"
+        ],
+        "summary": "create one dashboard",
+        "description": "",
+        "parameters": [
+          {
+            "name": "dashboard",
+            "in": "body",
+            "description": "dashboard to add",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "widgets": {
+                  "type": "string",
+                  "example": "JSON"
+                },
+                "layout": {
+                  "type": "string",
+                  "example": "JSON"
+                },
+                "userId": {
+                  "type": "number",
+                  "example": 1
+                }
+              },
+              "required": [
+                "name",
+                "widgets",
+                "layout"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the id of the created dashboard",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboards/{id}": {
+      "get": {
+        "tags": [
+          "DASHBOARDS"
+        ],
+        "summary": "get one dashboard by id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "dashboard ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned dashboard",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "dashboard 1"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Default dashboard"
+                },
+                "layout": {
+                  "type": "string",
+                  "example": "JSON"
+                },
+                "widgets": {
+                  "type": "string",
+                  "example": "JSON"
+                },
+                "userId": {
+                  "type": "number",
+                  "example": 1
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "layout",
+                "widgets"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "DASHBOARDS"
+        ],
+        "summary": "delete one dashboard",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "dashboard ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DASHBOARDS"
+        ],
+        "summary": "update dashboard",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dashboard",
+            "in": "body",
+            "description": "dashboard to update",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "widgets": {
+                  "type": "string",
+                  "example": "JSON"
+                },
+                "layout": {
+                  "type": "string",
+                  "example": "JSON"
+                },
+                "userId": {
+                  "type": "number",
+                  "example": 1
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/dashboards/linkUsers": {
+      "post": {
+        "tags": [
+          "DASHBOARDS"
+        ],
+        "summary": "link a dashboard to n users",
+        "description": "",
+        "parameters": [
+          {
+            "name": "NewDashboardUser",
+            "in": "body",
+            "description": "dashboard id and user id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "DashboardId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "UserId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "DashboardId",
+                  "UserId"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/roles/": {
+      "post": {
+        "tags": [
+          "ROLES"
+        ],
+        "summary": "add a role",
+        "description": "",
+        "parameters": [
+          {
+            "name": "NewRole",
+            "in": "body",
+            "description": "role to add",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "featureIds": {
+                  "type": "array",
+                  "example": [
+                    1
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "userIds": {
+                  "type": "array",
+                  "example": [
+                    1
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Returned role",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 2
+                },
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "featureIds": {
+                  "type": "array",
+                  "example": [
+                    1
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "userIds": {
+                  "type": "array",
+                  "example": [
+                    1
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "name"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ROLES"
+        ],
+        "summary": "get all roles",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned roles",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 2
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "featureIds": {
+                    "type": "array",
+                    "example": [
+                      1
+                    ],
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "userIds": {
+                    "type": "array",
+                    "example": [
+                      1
+                    ],
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "required": [
+                  "id",
+                  "name"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ROLES"
+        ],
+        "summary": "delete all roles or by name",
+        "description": "",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "description": "role name."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/roles/filter": {
+      "post": {
+        "tags": [
+          "ROLES"
+        ],
+        "summary": "get roles by filter",
+        "description": "",
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "body",
+            "description": "filter roles by username and features",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "features": {
+                  "type": "array",
+                  "example": [
+                    "string"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned filtered roles",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 2
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "featureIds": {
+                    "type": "array",
+                    "example": [
+                      1
+                    ],
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "userIds": {
+                    "type": "array",
+                    "example": [
+                      1
+                    ],
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "required": [
+                  "id",
+                  "name"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/roles/{id}": {
+      "put": {
+        "tags": [
+          "ROLES"
+        ],
+        "summary": "insert or update a role",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "role ID."
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "user to add or to update",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "featureId": {
+                  "type": "number",
+                  "example": 1
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ROLES"
+        ],
+        "summary": "delete one role",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "role ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/roles/linkUsers": {
+      "post": {
+        "tags": [
+          "ROLES"
+        ],
+        "summary": "link a role to n users",
+        "description": "",
+        "parameters": [
+          {
+            "name": "NewRoleUser",
+            "in": "body",
+            "description": "role id and users id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "RoleId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "UsersId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "RoleId",
+                  "UsersId"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/roles/linkFeatures": {
+      "post": {
+        "tags": [
+          "ROLES"
+        ],
+        "summary": "link role to features",
+        "description": "",
+        "parameters": [
+          {
+            "name": "NewRoleFeature",
+            "in": "body",
+            "description": "role id and features id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "RoleId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "FeaturesId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "RoleId",
+                  "FeaturesId"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/managementAreas/": {
+      "get": {
+        "tags": [
+          "MANAGEMENT AREAS"
+        ],
+        "summary": "get all management areas ",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned management areas",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "description"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "MANAGEMENT AREAS"
+        ],
+        "summary": "create a management area",
+        "description": "",
+        "parameters": [
+          {
+            "name": "managementArea",
+            "in": "body",
+            "description": "new management area object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the id of the created management Area",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "userIds": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2,
+                    3
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "name"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "MANAGEMENT AREAS"
+        ],
+        "summary": "update a management area",
+        "description": "",
+        "parameters": [
+          {
+            "name": "managementArea",
+            "in": "body",
+            "description": "update management area object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/managementAreas/filter": {
+      "post": {
+        "tags": [
+          "MANAGEMENT AREAS"
+        ],
+        "summary": "get management areas",
+        "description": "",
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "body",
+            "description": "filter management areas by username",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned management areas with filter",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "description"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/managementAreas/{id}": {
+      "delete": {
+        "tags": [
+          "MANAGEMENT AREAS"
+        ],
+        "summary": "delete a management area",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "management area ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/managementAreas/linkUsers": {
+      "post": {
+        "tags": [
+          "MANAGEMENT AREAS"
+        ],
+        "summary": "link a management area with n users",
+        "description": "",
+        "parameters": [
+          {
+            "name": "linkManagementAreaUsers",
+            "in": "body",
+            "description": "ManagementArea id and user id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ManagementAreaId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "UserId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "ManagementAreaId",
+                  "UserId"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/categories/": {
+      "get": {
+        "tags": [
+          "CATEGORIES"
+        ],
+        "summary": "get all categories",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned categories",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "xtvision"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Default user"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CATEGORIES"
+        ],
+        "summary": "add a new category",
+        "description": "",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "body",
+            "description": "new category object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the id of the created category",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CATEGORIES"
+        ],
+        "summary": "update a Category",
+        "description": "",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "body",
+            "description": "update category object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/categories/filter": {
+      "post": {
+        "tags": [
+          "CATEGORIES"
+        ],
+        "summary": "get categories by filter",
+        "description": "",
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "body",
+            "description": "filter categories by username",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "username"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned categories",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "xtvision"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Default user"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{id}": {
+      "delete": {
+        "tags": [
+          "CATEGORIES"
+        ],
+        "summary": "delete a category",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "category ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/categories/linkUsers": {
+      "post": {
+        "tags": [
+          "CATEGORIES"
+        ],
+        "summary": "link a category with n users",
+        "description": "",
+        "parameters": [
+          {
+            "name": "linkCategoryUsers",
+            "in": "body",
+            "description": "category id and user id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "CategoryId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "UsersId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "CategoryId",
+                  "UsersId"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/licenses/": {
+      "put": {
+        "tags": [
+          "LICENCES"
+        ],
+        "summary": "insert or update licence",
+        "description": "",
+        "parameters": [
+          {
+            "name": "license",
+            "in": "body",
+            "description": "new licence object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nb_max_intercoms": {
+                  "type": "string",
+                  "example": "number"
+                },
+                "mode": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "nb_max_users": {
+                  "type": "string",
+                  "example": "number"
+                }
+              },
+              "required": [
+                "nb_max_intercoms",
+                "mode",
+                "nb_max_users"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/licenses/{element}": {
+      "get": {
+        "tags": [
+          "LICENCES"
+        ],
+        "summary": "get Element From License",
+        "description": "",
+        "parameters": [
+          {
+            "name": "element",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/systems/": {
+      "get": {
+        "tags": [
+          "SYSTEMS"
+        ],
+        "summary": "get all systems",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned systems",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "server"
+                  },
+                  "user": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "example": "type"
+                  },
+                  "brand": {
+                    "type": "string",
+                    "example": "brand"
+                  },
+                  "port": {
+                    "type": "string",
+                    "example": "port"
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "address"
+                  },
+                  "release": {
+                    "type": "string",
+                    "example": "release"
+                  },
+                  "state": {
+                    "type": "string",
+                    "example": "connected"
+                  },
+                  "createdBy": {
+                    "type": "string",
+                    "example": "xtvision"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "example": "01/01/2000"
+                  },
+                  "updatedBy": {
+                    "type": "string",
+                    "example": "xtvision"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "example": "01/01/2000"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "user",
+                  "kind",
+                  "brand",
+                  "address",
+                  "release",
+                  "state",
+                  "createdBy",
+                  "createdAt",
+                  "updatedBy",
+                  "updatedAt"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "SYSTEMS"
+        ],
+        "summary": "add a system",
+        "description": "",
+        "parameters": [
+          {
+            "name": "addServer",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string",
+                  "example": "ip or dns"
+                },
+                "kind": {
+                  "type": "string",
+                  "example": "kind"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "port": {
+                  "type": "string",
+                  "example": "port"
+                },
+                "managementArea": {
+                  "type": "string",
+                  "example": "managementArea"
+                },
+                "category": {
+                  "type": "string",
+                  "example": "category"
+                },
+                "brand": {
+                  "type": "string",
+                  "example": "brand"
+                },
+                "createdBy": {
+                  "type": "string",
+                  "example": "xtvision"
+                },
+                "authMode": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "user": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "address",
+                "kind",
+                "name",
+                "brand",
+                "createdBy",
+                "authMode",
+                "user",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned system id and nb equipments",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "nbEquipments": {
+                    "type": "number",
+                    "example": 50
+                  }
+                },
+                "required": [
+                  "id",
+                  "nbEquipments"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "SYSTEMS"
+        ],
+        "summary": "Delete all systems and their linked datas",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/systems/authModes": {
+      "get": {
+        "tags": [
+          "SYSTEMS"
+        ],
+        "summary": "get authentication modes list for systems",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned authentication modes list for systems",
+            "schema": {
+              "type": "array",
+              "example": [
+                "string"
+              ],
+              "items": {
+                "type": "string"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/systems/brands": {
+      "get": {
+        "tags": [
+          "SYSTEMS"
+        ],
+        "summary": "get brands list for systems",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned brands list for systems",
+            "schema": {
+              "type": "array",
+              "example": [
+                "string"
+              ],
+              "items": {
+                "type": "string"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/systems/{id}": {
+      "get": {
+        "tags": [
+          "SYSTEMS"
+        ],
+        "summary": "get specific system by id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned specific system by id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "server"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "example": "type"
+                  },
+                  "brand": {
+                    "type": "string",
+                    "example": "brand"
+                  },
+                  "port": {
+                    "type": "string",
+                    "example": "port"
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "address"
+                  },
+                  "release": {
+                    "type": "string",
+                    "example": "release"
+                  },
+                  "state": {
+                    "type": "string",
+                    "example": "connected"
+                  },
+                  "createdBy": {
+                    "type": "string",
+                    "example": "xtvision"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "example": "01/01/2000"
+                  },
+                  "updatedBy": {
+                    "type": "string",
+                    "example": "xtvision"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "example": "01/01/2000"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "kind",
+                  "brand",
+                  "address",
+                  "release",
+                  "state",
+                  "createdBy",
+                  "createdAt",
+                  "updatedBy",
+                  "updatedAt"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "SYSTEMS"
+        ],
+        "summary": "Update a system",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "system ID."
+          },
+          {
+            "name": "params",
+            "in": "body",
+            "description": "attributes to update",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string",
+                  "example": "ip or dns"
+                },
+                "kind": {
+                  "type": "string",
+                  "example": "kind"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "port": {
+                  "type": "string",
+                  "example": "port"
+                },
+                "managementArea": {
+                  "type": "string",
+                  "example": "managementArea"
+                },
+                "category": {
+                  "type": "string",
+                  "example": "category"
+                },
+                "brand": {
+                  "type": "string",
+                  "example": "brand"
+                },
+                "createdBy": {
+                  "type": "string",
+                  "example": "xtvision"
+                },
+                "authMode": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "SYSTEMS"
+        ],
+        "summary": "Delete a system and its linked datas",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "system ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/systems/filter": {
+      "post": {
+        "tags": [
+          "SYSTEMS"
+        ],
+        "summary": "get systems by filter",
+        "description": "",
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "body",
+            "description": "filter systems by ...",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "example": "type"
+                },
+                "brand": {
+                  "type": "string",
+                  "example": "brand"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned filtered systems",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "server"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "example": "type"
+                  },
+                  "brand": {
+                    "type": "string",
+                    "example": "brand"
+                  },
+                  "port": {
+                    "type": "string",
+                    "example": "port"
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "address"
+                  },
+                  "release": {
+                    "type": "string",
+                    "example": "release"
+                  },
+                  "state": {
+                    "type": "string",
+                    "example": "connected"
+                  },
+                  "createdBy": {
+                    "type": "string",
+                    "example": "xtvision"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "example": "01/01/2000"
+                  },
+                  "updatedBy": {
+                    "type": "string",
+                    "example": "xtvision"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "example": "01/01/2000"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "kind",
+                  "brand",
+                  "address",
+                  "release",
+                  "state",
+                  "createdBy",
+                  "createdAt",
+                  "updatedBy",
+                  "updatedAt"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/systems/{id}/equipments": {
+      "get": {
+        "tags": [
+          "SYSTEMS"
+        ],
+        "summary": "get equipments from system id order by type",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "system ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned equipments from system id order by type",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "gid": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "equipment"
+                  },
+                  "ipAddress": {
+                    "type": "string",
+                    "example": "ipAddress"
+                  },
+                  "release": {
+                    "type": "string",
+                    "example": "release"
+                  },
+                  "brand": {
+                    "type": "string",
+                    "example": "brand"
+                  },
+                  "canReceiveTextMessage": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "camera": {
+                    "type": "string",
+                    "example": "camera"
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "status"
+                  },
+                  "equipmentTypeId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "behaviorId": {
+                    "type": "number",
+                    "example": 5
+                  },
+                  "systemId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "id",
+                  "gid",
+                  "name",
+                  "ipAddress",
+                  "release",
+                  "brand",
+                  "canReceiveTextMessage",
+                  "status",
+                  "equipmentTypeId",
+                  "behaviorId",
+                  "systemId"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/systems/{id}/equipmentsTypes": {
+      "get": {
+        "tags": [
+          "SYSTEMS"
+        ],
+        "summary": "get equipment types from system id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "system ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned equipment types from system id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "systemId": {
+                    "type": "number",
+                    "example": 7
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "systemId"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/systems/subscribe": {
+      "post": {
+        "tags": [
+          "SYSTEMS"
+        ],
+        "summary": "Reconnect systems and init Web Socket connection to systems if they exist (to get events)",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/modelPoints/": {
+      "get": {
+        "tags": [
+          "BEHAVIORS"
+        ],
+        "summary": "get all behaviors",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned behaviors",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "icon": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "isDefault": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "equipmentTypeId": {
+                    "type": "number",
+                    "example": 5
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "icon",
+                  "isDefault",
+                  "equipmentTypeId"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "BEHAVIORS"
+        ],
+        "summary": "create a behavior",
+        "description": "",
+        "parameters": [
+          {
+            "name": "behavior",
+            "in": "body",
+            "description": "new behavior object or update object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "icon": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "isDefault": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "equipmentTypeId": {
+                  "type": "number",
+                  "example": 5
+                }
+              },
+              "required": [
+                "name",
+                "icon",
+                "isDefault",
+                "equipmentTypeId"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/modelPoints/filter": {
+      "post": {
+        "tags": [
+          "BEHAVIORS"
+        ],
+        "summary": "get behaviors by filter",
+        "description": "",
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "body",
+            "description": "filter behaviors by type",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned behaviors with filters",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "icon": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "isDefault": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "equipmentTypeId": {
+                    "type": "number",
+                    "example": 5
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "icon",
+                  "isDefault",
+                  "equipmentTypeId"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/modelPoints/{id}": {
+      "delete": {
+        "tags": [
+          "BEHAVIORS"
+        ],
+        "summary": "delete a behavior",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "behavior ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/equipments/": {
+      "get": {
+        "summary": "get all equipments",
+        "description": "",
+        "parameters": [
+          {
+            "name": "pagination",
+            "in": "query",
+            "description": "pagination object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "type": "number",
+                  "example": 1
+                },
+                "size": {
+                  "type": "number",
+                  "example": 10
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned equipments with pagination",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "totalItems": {
+                  "type": "number",
+                  "example": 152
+                },
+                "totalPages": {
+                  "type": "number",
+                  "example": 18
+                },
+                "currentPage": {
+                  "type": "number",
+                  "example": 3
+                },
+                "datas": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "gid": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "equipment"
+                      },
+                      "label": {
+                        "type": "string",
+                        "example": "equipment"
+                      },
+                      "ipAddress": {
+                        "type": "string",
+                        "example": "ipAddress"
+                      },
+                      "release": {
+                        "type": "string",
+                        "example": "release"
+                      },
+                      "camera": {
+                        "type": "string",
+                        "example": "camera"
+                      },
+                      "status": {
+                        "type": "string",
+                        "example": "status"
+                      },
+                      "canReceiveTextMessage": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "equipmentBrandId": {
+                        "type": "number",
+                        "example": 2
+                      },
+                      "behaviorId": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "domainId": {
+                        "type": "number",
+                        "example": 3
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "gid",
+                      "name",
+                      "label",
+                      "ipAddress",
+                      "release",
+                      "status",
+                      "canReceiveTextMessage",
+                      "equipmentBrandId",
+                      "behaviorId",
+                      "domainId"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "totalItems",
+                "totalPages",
+                "currentPage",
+                "datas"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equipments/actionsTypes": {
+      "get": {
+        "summary": "get action types from equipment brand id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "equipmentBrandId",
+            "in": "query",
+            "type": "integer",
+            "description": "equipment brand ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned action types from equipment brand and system id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "equipmentPropertyId": {
+                    "type": "number",
+                    "example": 7
+                  },
+                  "Params": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "example": 2
+                        },
+                        "nameId": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "labelFr": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "labelEn": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "paramValues": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "nameId",
+                        "labelFr",
+                        "labelEn",
+                        "kind"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "equipmentPropertyId",
+                  "Params"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equipments/states": {
+      "get": {
+        "summary": "get states from equipment brand id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "equipmentBrandId",
+            "in": "query",
+            "type": "integer",
+            "description": "equipment brand ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned states from equipment brand and system id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "icon": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "gravity": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "concernedBrands": {
+                    "type": "array",
+                    "example": [
+                      "string"
+                    ],
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "stateParams": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "example": 1
+                        },
+                        "labelFr": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "labelEn": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "value": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "labelFr",
+                        "labelEn",
+                        "type"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "icon",
+                  "gravity",
+                  "concernedBrands",
+                  "stateParams"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equipments/filter": {
+      "post": {
+        "summary": "get equipments by filter",
+        "description": "",
+        "parameters": [
+          {
+            "name": "pagination",
+            "in": "query",
+            "description": "pagination object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page": {
+                  "type": "number",
+                  "example": 1
+                },
+                "size": {
+                  "type": "number",
+                  "example": 10
+                }
+              }
+            }
+          },
+          {
+            "name": "filters",
+            "in": "body",
+            "description": "filter equipments by attributes",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "typesIds": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "ids": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "canReceiveTextMessage": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "domainId": {
+                  "type": "number",
+                  "example": 5
+                },
+                "systemId": {
+                  "type": "number",
+                  "example": 4
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned equipments with filter and pagination",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "totalItems": {
+                  "type": "number",
+                  "example": 152
+                },
+                "datas": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "gid": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "equipment"
+                      },
+                      "label": {
+                        "type": "string",
+                        "example": "equipment"
+                      },
+                      "ipAddress": {
+                        "type": "string",
+                        "example": "ipAddress"
+                      },
+                      "release": {
+                        "type": "string",
+                        "example": "release"
+                      },
+                      "camera": {
+                        "type": "string",
+                        "example": "camera"
+                      },
+                      "status": {
+                        "type": "string",
+                        "example": "status"
+                      },
+                      "canReceiveTextMessage": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "equipmentBrandId": {
+                        "type": "number",
+                        "example": 2
+                      },
+                      "behaviorId": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "domainId": {
+                        "type": "number",
+                        "example": 3
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "gid",
+                      "name",
+                      "label",
+                      "ipAddress",
+                      "release",
+                      "status",
+                      "canReceiveTextMessage",
+                      "equipmentBrandId",
+                      "behaviorId",
+                      "domainId"
+                    ]
+                  }
+                },
+                "totalPages": {
+                  "type": "number",
+                  "example": 18
+                },
+                "currentPage": {
+                  "type": "number",
+                  "example": 3
+                }
+              },
+              "required": [
+                "totalItems",
+                "datas",
+                "totalPages",
+                "currentPage"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equipments/events": {
+      "post": {
+        "summary": "subscribe or unsubscribe to receive events from equipments of systems",
+        "description": "",
+        "parameters": [
+          {
+            "name": "equipmentsEvents",
+            "in": "body",
+            "description": "subscribe or unsubscribe to receive events from equipments of systems",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "equipmentId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "subscribe": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                },
+                "required": [
+                  "equipmentId",
+                  "subscribe"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/equipments/{id}/actions/{actionType}": {
+      "post": {
+        "summary": "Operate an equipment to do an action in a system",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "equipment ID."
+          },
+          {
+            "name": "actionType",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "action type."
+          },
+          {
+            "name": "params",
+            "in": "body",
+            "description": "map of params to do an action",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "param": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/equipments/{id}": {
+      "delete": {
+        "summary": "Delete an equipment (via id) and its linked datas",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "equipment ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/xtvisionEquipmentConfigs/": {
+      "get": {
+        "tags": [
+          "XTVISION EQUIPMENTS CONFIGS"
+        ],
+        "summary": "get all xtvision equipment configs",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned xtvision equipment configs",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "equipmentId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "isSupervised": {
+                    "type": "boolean",
+                    "example": false
+                  }
+                },
+                "required": [
+                  "equipmentId",
+                  "isSupervised"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/xtvisionEquipmentConfigs/{id}": {
+      "put": {
+        "tags": [
+          "XTVISION EQUIPMENTS CONFIGS"
+        ],
+        "summary": "update a xtvision equipment config",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "xtvision equipment config ID."
+          },
+          {
+            "name": "xtvisionEquipmentConfig",
+            "in": "xtvisionEquipmentConfig",
+            "description": "xtvision equipment config to update",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "isSupervised": {
+                  "type": "boolean",
+                  "example": true
+                }
+              },
+              "required": [
+                "isSupervised"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/equipmentsTypes/": {
+      "get": {
+        "tags": [
+          "EQUIPMENT TYPES"
+        ],
+        "summary": "get all equipment types",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned equipment types",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "systemId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "systemId"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equipmentsTypes/{id}/actionsTypes": {
+      "get": {
+        "tags": [
+          "EQUIPMENT TYPES"
+        ],
+        "summary": "get action types from type equipment id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "type equipment ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned action types from type equipment id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "equipmentPropertyId": {
+                    "type": "number",
+                    "example": 7
+                  },
+                  "Params": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "example": 2
+                        },
+                        "nameId": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "labelFr": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "labelEn": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "paramValues": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "nameId",
+                        "labelFr",
+                        "labelEn",
+                        "kind"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "equipmentPropertyId",
+                  "Params"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equipmentsTypes/{id}/states": {
+      "get": {
+        "tags": [
+          "EQUIPMENT TYPES"
+        ],
+        "summary": "get states from type equipment id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "type equipment ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned states from type equipment id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "equipmentPropertyId": {
+                    "type": "number",
+                    "example": 7
+                  },
+                  "Params": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "example": 2
+                        },
+                        "nameId": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "labelFr": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "labelEn": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "paramValues": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "nameId",
+                        "labelFr",
+                        "labelEn",
+                        "kind"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "equipmentPropertyId",
+                  "Params"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equipmentsTypes/{id}/equipments": {
+      "get": {
+        "tags": [
+          "EQUIPMENT TYPES"
+        ],
+        "summary": "get equipments from type equipment id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "type equipment ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned equipments from type equipment id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "gid": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "equipment"
+                  },
+                  "ipAddress": {
+                    "type": "string",
+                    "example": "ipAddress"
+                  },
+                  "release": {
+                    "type": "string",
+                    "example": "release"
+                  },
+                  "brand": {
+                    "type": "string",
+                    "example": "brand"
+                  },
+                  "canReceiveTextMessage": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "camera": {
+                    "type": "string",
+                    "example": "camera"
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "status"
+                  },
+                  "equipmentTypeId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "behaviorId": {
+                    "type": "number",
+                    "example": 5
+                  }
+                },
+                "required": [
+                  "id",
+                  "gid",
+                  "name",
+                  "ipAddress",
+                  "release",
+                  "brand",
+                  "canReceiveTextMessage",
+                  "status",
+                  "equipmentTypeId",
+                  "behaviorId"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equipmentsBrands/": {
+      "get": {
+        "tags": [
+          "EQUIPMENTS BRANDS"
+        ],
+        "summary": "get all equipments brands",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned equipments brands",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "equipmentTypeId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "equipmentTypeId"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/": {
+      "get": {
+        "tags": [
+          "EVENTS"
+        ],
+        "summary": "get all events",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned events",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "sequenceNumber": {
+                    "type": "number",
+                    "example": 5
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "example": "timestamp"
+                  },
+                  "equipmentProperty": {
+                    "type": "string",
+                    "example": "equipmentProperty"
+                  },
+                  "equipmentName": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "stateName": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "systemId": {
+                    "type": "number",
+                    "example": 2
+                  },
+                  "params": {
+                    "type": "string",
+                    "example": "params"
+                  }
+                },
+                "required": [
+                  "id",
+                  "sequenceNumber",
+                  "timestamp",
+                  "equipmentProperty",
+                  "equipmentName",
+                  "stateName",
+                  "systemId",
+                  "params"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/filter": {
+      "post": {
+        "tags": [
+          "EVENTS"
+        ],
+        "summary": "get events by filter",
+        "description": "",
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "body",
+            "description": "filter events by timestamp, type, equipment and/or equipmentProperty",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "timestamp": {
+                  "type": "string",
+                  "example": "date"
+                },
+                "stateName": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "equipmentName": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "equipmentProperty": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "timestamp",
+                "stateName",
+                "equipmentName",
+                "equipmentProperty"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned events with filters",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "sequenceNumber": {
+                    "type": "number",
+                    "example": 5
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "example": "timestamp"
+                  },
+                  "equipmentProperty": {
+                    "type": "string",
+                    "example": "equipmentProperty"
+                  },
+                  "equipmentName": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "stateName": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "systemId": {
+                    "type": "number",
+                    "example": 2
+                  },
+                  "params": {
+                    "type": "string",
+                    "example": "params"
+                  }
+                },
+                "required": [
+                  "id",
+                  "sequenceNumber",
+                  "timestamp",
+                  "equipmentProperty",
+                  "equipmentName",
+                  "stateName",
+                  "systemId",
+                  "params"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifBindingKeys/": {
+      "get": {
+        "tags": [
+          "NOTIF BINDING KEYS"
+        ],
+        "summary": "get all notif binding keys ",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned notif binding keys",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "systemId": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "notifBindingKey"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "NOTIF BINDING KEYS"
+        ],
+        "summary": "add a notif binding key",
+        "description": "",
+        "parameters": [
+          {
+            "name": "addNotifBindingKey",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "systemId": {
+                  "type": "number",
+                  "example": 5
+                },
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "equipmentIds": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              },
+              "required": [
+                "systemId",
+                "name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned notif binding key id",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "defaultMessageTtl": {
+                  "type": "number",
+                  "example": 2
+                },
+                "systemId": {
+                  "type": "number",
+                  "example": 1
+                },
+                "sendingMode": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "defaultMessageTtl",
+                "systemId",
+                "sendingMode"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifBindingKeys/{id}": {
+      "get": {
+        "tags": [
+          "NOTIF BINDING KEYS"
+        ],
+        "summary": "get a notif binding key by id ",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "notif binding key ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned notif binding key by id",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "notifBindingKey"
+                },
+                "defaultMessageTtl": {
+                  "type": "number",
+                  "example": 1
+                },
+                "systemId": {
+                  "type": "number",
+                  "example": 1
+                },
+                "sendingMode": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "defaultMessageTtl",
+                "systemId",
+                "sendingMode"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "NOTIF BINDING KEYS"
+        ],
+        "summary": "bind equipments to a notif binding key",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "notif binding key ID."
+          },
+          {
+            "name": "bindEquipmentsNotifBindingKey",
+            "in": "body",
+            "description": "Array of equipment ids",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "equipmentIds": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              },
+              "required": [
+                "equipmentIds"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NOTIF BINDING KEYS"
+        ],
+        "summary": "update the name of a binding key",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "notif binding key ID."
+          },
+          {
+            "name": "updateNotifBindingKey",
+            "in": "body",
+            "description": "new name of the binding key",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NOTIF BINDING KEYS"
+        ],
+        "summary": "delete one notif binding key by id ",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "notif binding key ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/notifMessages/": {
+      "post": {
+        "tags": [
+          "NOTIF MESSAGES"
+        ],
+        "summary": "save a Notif Predefined Message",
+        "description": "",
+        "parameters": [
+          {
+            "name": "message",
+            "in": "body",
+            "description": "save notif message ",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "body": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "messageTtl": {
+                  "type": "number",
+                  "example": 3600
+                },
+                "messageDelay": {
+                  "type": "number",
+                  "example": 3600
+                },
+                "priority": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "sender": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "enclosed_file": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "bindingKeys": {
+                  "type": "string",
+                  "example": "number[]"
+                }
+              },
+              "required": [
+                "title",
+                "body",
+                "messageTtl",
+                "messageDelay",
+                "priority",
+                "sender",
+                "enclosed_file",
+                "bindingKeys"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned notif predefined message id",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "title": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "body": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "messageTtl": {
+                  "type": "number",
+                  "example": 3600
+                },
+                "messageDelay": {
+                  "type": "number",
+                  "example": 3600
+                },
+                "priority": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "sender": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "body",
+                "messageTtl",
+                "messageDelay",
+                "priority",
+                "sender"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "NOTIF MESSAGES"
+        ],
+        "summary": "get all notif predefined messages ",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned notif predefined messages",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "body": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "messageTtl": {
+                    "type": "number",
+                    "example": 3600
+                  },
+                  "messageDelay": {
+                    "type": "number",
+                    "example": 3600
+                  },
+                  "priority": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "sender": {
+                    "type": "string",
+                    "example": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "title",
+                  "body",
+                  "messageTtl",
+                  "messageDelay",
+                  "priority",
+                  "sender"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifMessages/{id}": {
+      "put": {
+        "tags": [
+          "NOTIF MESSAGES"
+        ],
+        "summary": "update a notif predefined message",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "message",
+            "in": "body",
+            "description": "update notif predefined message",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "body": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "messageTtl": {
+                  "type": "number",
+                  "example": 3600
+                },
+                "messageDelay": {
+                  "type": "number",
+                  "example": 3600
+                },
+                "priority": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "sender": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "title",
+                "body",
+                "messageTtl",
+                "messageDelay",
+                "priority",
+                "sender"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NOTIF MESSAGES"
+        ],
+        "summary": "delete a notif predefined message",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "notif message ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/notifMessages/history": {
+      "get": {
+        "tags": [
+          "NOTIF MESSAGES"
+        ],
+        "summary": "get all notif historized messages ",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned notif historized messages",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "body": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "messageTtl": {
+                    "type": "number",
+                    "example": 3600
+                  },
+                  "messageDelay": {
+                    "type": "number",
+                    "example": 3600
+                  },
+                  "priority": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "sender": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "notifBindingKeysIds": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "notifBindingKeysNames": {
+                    "type": "string",
+                    "example": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "title",
+                  "body",
+                  "messageTtl",
+                  "messageDelay",
+                  "priority",
+                  "sender",
+                  "notifBindingKeysIds",
+                  "notifBindingKeysNames"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifMessages/send": {
+      "post": {
+        "tags": [
+          "NOTIF MESSAGES"
+        ],
+        "summary": "send a Notif Message",
+        "description": "",
+        "parameters": [
+          {
+            "name": "message",
+            "in": "body",
+            "description": "send notif message ",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "body": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "messageTtl": {
+                  "type": "number",
+                  "example": 3600
+                },
+                "messageDelay": {
+                  "type": "number",
+                  "example": 0
+                },
+                "priority": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "sender": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "enclosed_file": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "bindingKeys": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              },
+              "required": [
+                "title",
+                "body",
+                "messageTtl",
+                "messageDelay",
+                "priority",
+                "sender",
+                "enclosed_file",
+                "bindingKeys"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned notif message id",
+            "schema": {
+              "type": "array",
+              "example": [
+                true
+              ],
+              "items": {
+                "type": "boolean"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifMessages/sent/{id}": {
+      "delete": {
+        "tags": [
+          "NOTIF MESSAGES"
+        ],
+        "summary": "delete a sent notif message",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "notif message ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/notifMessages/delay": {
+      "post": {
+        "tags": [
+          "NOTIF MESSAGES"
+        ],
+        "summary": "send a Notif Message",
+        "description": "",
+        "parameters": [
+          {
+            "name": "message",
+            "in": "body",
+            "description": "send notif message ",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "body": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "messageTtl": {
+                  "type": "number",
+                  "example": 3600
+                },
+                "messageDelay": {
+                  "type": "number",
+                  "example": 3600
+                },
+                "priority": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "sender": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "enclosed_file": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "bindingKeys": {
+                  "type": "array",
+                  "example": [
+                    1,
+                    2
+                  ],
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              },
+              "required": [
+                "title",
+                "body",
+                "messageTtl",
+                "messageDelay",
+                "priority",
+                "sender",
+                "enclosed_file",
+                "bindingKeys"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned notif message id",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                }
+              },
+              "required": [
+                "id"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifMessages/delay/{historyId}": {
+      "put": {
+        "tags": [
+          "NOTIF MESSAGES"
+        ],
+        "summary": "update a delayed notif message",
+        "description": "",
+        "parameters": [
+          {
+            "name": "historyId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "notif message ID.",
+            "required": true
+          },
+          {
+            "name": "message",
+            "in": "body",
+            "description": "update delayed notif message",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "body": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "messageTtl": {
+                  "type": "number",
+                  "example": 3600
+                },
+                "messageDelay": {
+                  "type": "number",
+                  "example": 3600
+                },
+                "priority": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "sender": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "enclosed_file": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "title",
+                "body",
+                "messageTtl",
+                "messageDelay",
+                "priority",
+                "sender",
+                "enclosed_file"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/notifMessages/delay/{jobId}/{messageId}": {
+      "delete": {
+        "tags": [
+          "NOTIF MESSAGES"
+        ],
+        "summary": "cancel a delayed notif message",
+        "description": "",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "job ID."
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "message ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/notifServerStatus/{systemId}": {
+      "get": {
+        "tags": [
+          "NOTIF SERVER STATUS"
+        ],
+        "summary": "get all currently connected equipments in a RabbitMQ server ",
+        "description": "",
+        "parameters": [
+          {
+            "name": "systemId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "system ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned currently connected equipments",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actionUsers/": {
+      "post": {
+        "tags": [
+          "ACTION USERS"
+        ],
+        "summary": "create news action user",
+        "description": "",
+        "parameters": [
+          {
+            "name": "actionUser",
+            "in": "body",
+            "description": "new action user object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "timestamp": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "category": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "settings": {
+                  "type": "array",
+                  "example": [
+                    "string"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "action",
+                "timestamp",
+                "category",
+                "settings"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the id of the created user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/actionUsers/filter": {
+      "post": {
+        "tags": [
+          "ACTION USERS"
+        ],
+        "summary": "get action user by filter ",
+        "description": "",
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "body",
+            "description": "filter action user by keyword and period",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "period": {
+                  "type": "array",
+                  "example": [
+                    "string"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "keyword": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "period",
+                "keyword"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the id of the created user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "action": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "timestamp": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "category": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "settings": {
+                  "type": "array",
+                  "example": [
+                    "settings"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "action",
+                "timestamp",
+                "category",
+                "settings"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/domains/": {
+      "get": {
+        "tags": [
+          "DOMAINS"
+        ],
+        "summary": "get all domains",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned domains",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "domainSystemId": {
+                    "type": "number",
+                    "example": 4
+                  },
+                  "parentDomainSystemId": {
+                    "type": "number",
+                    "example": 2
+                  },
+                  "systemId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "domainSystemId",
+                  "parentDomainSystemId",
+                  "systemId"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/domains/{id}": {
+      "get": {
+        "tags": [
+          "DOMAINS"
+        ],
+        "summary": "get domain from id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "domain ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned domain",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "domainSystemId": {
+                    "type": "number",
+                    "example": 4
+                  },
+                  "parentDomainSystemId": {
+                    "type": "number",
+                    "example": 2
+                  },
+                  "systemId": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "domainSystemId",
+                  "parentDomainSystemId",
+                  "systemId"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/databases/restore": {
+      "post": {
+        "tags": [
+          "DATABASE"
+        ],
+        "summary": "Restore a database",
+        "description": "",
+        "parameters": [
+          {
+            "name": "restoreDatabaseObject",
+            "in": "body",
+            "description": "infos to restore database",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "backupName": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "backupName"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/databases/backup": {
+      "post": {
+        "tags": [
+          "DATABASE"
+        ],
+        "summary": "Backup a database",
+        "description": "",
+        "parameters": [
+          {
+            "name": "backupDatabaseObject",
+            "in": "body",
+            "description": "infos to backup database",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "dbName": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "backupName": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "dbName",
+                "backupName",
+                "description"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/databases/dbNames": {
+      "get": {
+        "tags": [
+          "DATABASE"
+        ],
+        "summary": "Get all databases names",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned databases names",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "dbNameConfig": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "dbNameExploit": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "dbNameConfig",
+                "dbNameExploit"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/databases/backupNames/{type}": {
+      "get": {
+        "tags": [
+          "DATABASE"
+        ],
+        "summary": "Get all backups names in manual or scheduled folder",
+        "description": "",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "manual or scheduled folder"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned backups names",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "creationDate": {
+                    "type": "function"
+                  },
+                  "size": {
+                    "type": "number",
+                    "example": 1000
+                  }
+                },
+                "required": [
+                  "name",
+                  "creationDate",
+                  "size"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/databases/upload": {
+      "post": {
+        "tags": [
+          "DATABASE"
+        ],
+        "summary": "upload a backup file to manual folder",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/databases/files/{type}/{fileNames}": {
+      "get": {
+        "tags": [
+          "DATABASE"
+        ],
+        "summary": "download zip archive with selected files in manual or scheduled folder",
+        "description": "",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "fileNames",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "file names"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/databases/all/{type}": {
+      "get": {
+        "tags": [
+          "DATABASE"
+        ],
+        "summary": "download all files in manual or scheduled folder",
+        "description": "",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "manual or scheduled folder"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/databases/{backupNames}": {
+      "delete": {
+        "tags": [
+          "DATABASE"
+        ],
+        "summary": "Delete a manual backup",
+        "description": "",
+        "parameters": [
+          {
+            "name": "backupNames",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "backup name"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/applicationParameters/": {
+      "get": {
+        "tags": [
+          "APPLICATION PARAMETERS"
+        ],
+        "summary": "get all application parameters",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned application parameters",
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "APPLICATION PARAMETERS"
+        ],
+        "summary": "update application parameters",
+        "description": "",
+        "parameters": [
+          {
+            "name": "applicationParameters",
+            "in": "body",
+            "description": "application parameters object",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/authenticationParameters/": {
+      "get": {
+        "tags": [
+          "AUTHENTICATION PARAMETERS"
+        ],
+        "summary": "get all authentication parameters",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned authentication parameters",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "authorize_url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "token_url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "authenticate_url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "logout_url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "users_url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "client_id": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "redirect_uri": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "client_secret": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "admin_client_id": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "admin_client_secret": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "token_username_key": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "token_username_split": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "ad_url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "ad_base_dn": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "ad_username": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "ad_password": {
+                  "type": "string",
+                  "example": "string"
+                }
+              },
+              "required": [
+                "mode"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "AUTHENTICATION PARAMETERS"
+        ],
+        "summary": "update authentication parameters",
+        "description": "",
+        "parameters": [
+          {
+            "name": "authenticationParameters",
+            "in": "body",
+            "description": "authentication parameters object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "authorize_url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "token_url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "authenticate_url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "logout_url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "users_url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "client_id": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "redirect_uri": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "client_secret": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "admin_client_id": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "admin_client_secret": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "token_username_key": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "token_username_split": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "ad_url": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "ad_base_dn": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "ad_username": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "ad_password": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/authenticationParameters/mode": {
+      "get": {
+        "tags": [
+          "AUTHENTICATION PARAMETERS"
+        ],
+        "summary": "get auth mode list",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned auth mode list",
+            "schema": {
+              "type": "array",
+              "example": [
+                "string"
+              ],
+              "items": {
+                "type": "string"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scheduledJobs/": {
+      "post": {
+        "tags": [
+          "SCHEDULED JOBS"
+        ],
+        "summary": "insert a scheduled job",
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Scheduled job to insert",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "task": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "date": {
+                  "type": "function"
+                },
+                "cron": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "param1": {
+                  "type": "number",
+                  "example": 1
+                },
+                "active": {
+                  "type": "number",
+                  "example": 1
+                }
+              },
+              "required": [
+                "name",
+                "task"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scheduled job inserted",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "task": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "date": {
+                  "type": "function"
+                },
+                "cron": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "param1": {
+                  "type": "number",
+                  "example": 1
+                },
+                "active": {
+                  "type": "number",
+                  "example": 1
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "task"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "SCHEDULED JOBS"
+        ],
+        "summary": "get all scheduled jobs",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Returned scheduled jobs",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "task": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "date": {
+                    "type": "function"
+                  },
+                  "cron": {
+                    "type": "string",
+                    "example": "string"
+                  },
+                  "param1": {
+                    "type": "number",
+                    "example": 1
+                  },
+                  "active": {
+                    "type": "number",
+                    "example": 1
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "task"
+                ]
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scheduledJobs/{id}": {
+      "get": {
+        "tags": [
+          "SCHEDULED JOBS"
+        ],
+        "summary": "get a scheduled job by id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "scheduled job ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned scheduled job",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "task": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "date": {
+                  "type": "function"
+                },
+                "cron": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "param1": {
+                  "type": "number",
+                  "example": 1
+                },
+                "active": {
+                  "type": "number",
+                  "example": 1
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "task"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "SCHEDULED JOBS"
+        ],
+        "summary": "update a scheduled job \"active\" status",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "scheduled job ID."
+          },
+          {
+            "name": "message",
+            "in": "body",
+            "description": "update scheduled job active status",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "active": {
+                  "type": "boolean",
+                  "example": true
+                }
+              },
+              "required": [
+                "active"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "SCHEDULED JOBS"
+        ],
+        "summary": "delete a scheduled job",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "scheduled job ID."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  }
+}

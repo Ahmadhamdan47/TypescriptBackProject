@@ -1,0 +1,134 @@
+{
+  "buttons": {
+    "addNewUser": "Ajouter un nouvel utilisateur",
+    "cancel": "Annuler",
+    "configMode": "Mode configuration",
+    "delete": "Supprimer",
+    "edit": "Éditer",
+    "exploitMode": "Mode exploitation",
+    "newMessage": "Nouveau message",
+    "save": "Enregistrer",
+    "send": "Envoyer"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "dropdownTitle": "Sélectionner un tableau de bord"
+  },
+  "error": {
+    "default": "Impossible de charger la page demandée",
+    "loadUsers": "Impossible de charger la liste des utilisateurs"
+  },
+  "home": "Tableau de bord",
+  "info-thread": {
+    "messageContentPlaceholder": "Cliquez sur un message pour afficher son contenu",
+    "messagesList": {
+      "messageActions": "Actions",
+      "messageContent": "Contenu",
+      "messageContentPlaceholder": "Entrez un message",
+      "messageDate": "Date",
+      "messageSender": "Expéditeur",
+      "messageStatus": {
+        "title": "Status",
+        "read": "Lu"
+      },
+      "messageTopic": "Objet",
+      "messageTopicPlaceholder": "Entrez un objet",
+      "title": "Messages envoyés"
+    },
+    "new": "Nouveau message",
+    "title": "Fil d'information"
+  },
+  "languages": {
+    "en": "Anglais",
+    "fr": "Français",
+    "gb": "Anglais"
+  },
+  "logout": "Déconnexion",
+  "logs": {
+    "title": "Logs",
+    "selectAll": "Tout sélectionner",
+    "downloadAll": "Tout télécharger",
+    "deleteAllFiles": "Tout supprimer"
+  },
+  "maintenance": {
+    "title": "Maintenance",
+    "submenus": {
+      "backup": "Sauvegarde",
+      "logs": "Logs"
+    }
+  },
+  "topbar": {
+    "searchBarPlaceholder": "Rechercher",
+    "actionsProfile": {
+      "edit": "Éditer le profil",
+      "logout": "Déconnexion"
+    }
+  },
+  "system": {
+    "add": {
+      "fail": "Échec",
+      "failDescription": "Il y a eu une erreur lors de l'ajout d'un système.",
+      "success": "Succès",
+      "successDescription": "Le système a été correctement ajouté."
+    },
+    "cards": {
+      "brand": "Marque",
+      "equipments": "Équipements",
+      "modified": "Modifié le",
+      "state": "État"
+    },
+    "delete": {
+      "fail": "Échec",
+      "failDescription": "Il y a eu une erreur lors de la suppression du système.",
+      "success": "Succès",
+      "successDescription": "Le système a été correctement supprimé.",
+      "alert": "Etes-vous sûr de vouloir supprimer ce système?",
+      "warning": "Vous êtes sur le point de supprimer un système, cette action est irréversible."
+    },
+    "filter": {
+      "title": "Filtré par"
+    },
+    "form": {
+      "address": "Adresse",
+      "authmode": "Mode d'authentification",
+      "brand": "Marque",
+      "category": "Catégorie",
+      "createdBy": "Créé par",
+      "kind": "Type",
+      "managementArea": "Zone de gestion",
+      "name": "Nom",
+      "password": "Mot de passe",
+      "port": "Port",
+      "title": "Système",
+      "user": "Utilisateur"
+    },
+    "title": "Système"
+  },
+  "users": {
+    "actions": "Actions",
+    "delete": {
+      "confirm": "Êtes-vous sûr de vouloir supprimer cet utilisateur ?",
+      "title": "Supprimer l'utilisateur"
+    },
+    "deleteMultiple": {
+      "confirm": "Êtes-vous sûr de vouloir supprimer les utilisateurs sélectionnés ?",
+      "title": "Supprimer les utilisateurs"
+    },
+    "errors": {
+      "descriptionInvalid": "La description doit contenir entre 3 et 100 caractères",
+      "nameMissing": "Le nom est obligatoire",
+      "nameInvalid": "Le nom doit contenir entre 3 et 20 caractères",
+      "passwordMissing": "Le mot de passe est obligatoire",
+      "passwordInvalid": "Le mot de passe doit contenir entre 3 et 20 caractères"
+    },
+    "description": "Description",
+    "language": "Langue",
+    "modify": "Modifier l'utilisateur",
+    "name": "Nom",
+    "new": "Nouvel utilisateur",
+    "password": "Mot de passe",
+    "timezone": "Fuseau horaire",
+    "title": "Liste des utilisateurs",
+    "users": "Utilisateurs"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "buttons": {
+    "addNewUser": "",
+    "cancel": "",
+    "configMode": "",
+    "delete": "",
+    "edit": "",
+    "exploitMode": "",
+    "newMessage": "",
+    "save": "",
+    "send": ""
+  },
+  "dashboard": {
+    "title": "",
+    "dropdownTitle": ""
+  },
+  "error": {
+    "default": "",
+    "loadUsers": ""
+  },
+  "home": "",
+  "info-thread": {
+    "messageContentPlaceholder": "",
+    "messagesList": {
+      "messageActions": "",
+      "messageContent": "",
+      "messageContentPlaceholder": "",
+      "messageDate": "",
+      "messageSender": "",
+      "messageStatus": {
+        "title": "",
+        "read": ""
+      },
+      "messageTopic": "",
+      "messageTopicPlaceholder": "",
+      "title": ""
+    },
+    "new": "",
+    "titre": "",
+    "title": ""
+  },
+  "logout": "",
+  "users": {
+    "actions": "",
+    "description": "",
+    "langue": "",
+    "modifier": "",
+    "nom": "",
+    "new": "",
+    "title": "",
+    "users": "",
+    "language": "",
+    "modify": "",
+    "name": ""
+  }
+}

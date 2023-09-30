@@ -1,0 +1,19 @@
+$castel-color: #0060a9;
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    opacity: 0.8;
+    color: $castel-color;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 1.2;
+    text-align: center;
+  }
+}

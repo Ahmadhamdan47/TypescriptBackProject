@@ -1,0 +1,196 @@
+{
+  "backup": {
+    "title": "Backup",
+    "download": {
+      "success": "Download success",
+      "successDescription": "is well downloaded",
+      "fail": "Download fail",
+      "failDescription": "The download failed, try again.",
+      "selectedFiles": "Download",
+      "all": "Download"
+    },
+    "import": {
+      "title": "Import",
+      "button": "Import",
+      "upload": "Upload"
+    },
+    "save": {
+      "title": "Save",
+      "button": "Save"
+    },
+    "option": {
+      "manual": "manual",
+      "scheduled": "scheduled"
+    },
+    "noFiles": "There is no file.",
+    "delete": {
+      "selectedFiles": {
+        "alert": "Delete the selected files",
+        "button": "Delete",
+        "warning": "You are about to delete the selected files, this action is irreversible."
+      },
+      "oneFile": {
+        "alert": "Delete",
+        "warning": "You are about to delete one file, this action is irreversible."
+      }
+    },
+    "restore": {
+      "title": "Restore",
+      "warning": "You are about to restore a database."
+    },
+    "form": {
+      "database": "Database",
+      "name": "Name",
+      "description": "Description"
+    }
+  },
+  "buttons": {
+    "addNewUser": "Add new user",
+    "cancel": "Cancel",
+    "configMode": "Configuration mode",
+    "delete": "Delete",
+    "edit": "Edit",
+    "exploitMode": "Exploitation mode",
+    "newMessage": "New message",
+    "save": "Save",
+    "send": "Send"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "dropdownTitle": "Select dashboard"
+  },
+  "error": {
+    "default": "Could not load the requested page.",
+    "loadUsers": "Could not load the list of users."
+  },
+  "home": "Dashboard",
+  "info-thread": {
+    "messageContentPlaceholder": "Click on a message to display its content",
+    "messagesList": {
+      "messageActions": "Actions",
+      "messageContent": "Content",
+      "messageContentPlaceholder": "Enter a message",
+      "messageDate": "Date",
+      "messageSender": "Sender",
+      "messageStatus": {
+        "title": "Status",
+        "read": "Read"
+      },
+      "messageTopic": "Topic",
+      "messageTopicPlaceholder": "Enter a topic",
+      "title": "Sent messages"
+    },
+    "new": "New message",
+    "titre": "",
+    "title": "Information Thread"
+  },
+  "languages": {
+    "en": "English",
+    "fr": "French",
+    "gb": "English"
+  },
+  "logout": "Logout",
+  "logs": {
+    "title": "Logs",
+    "download": {
+      "success": "Download success",
+      "successDescription": " is well downloaded",
+      "fail": "Download fail",
+      "failDescription": "The download failed, try again.",
+      "selectedFiles": "Download",
+      "all": "Download"
+    },
+    "delete": {
+      "selectedFiles": {
+        "alert": "Delete the selected files",
+        "button": "Delete",
+        "warning": "You are about to delete the selected files, this action is irreversible."
+      },
+      "oneFile": {
+        "alert": "Delete",
+        "warning": "You are about to delete one file, this action is irreversible."
+      },
+      "all": {
+        "alert": "Delete all the files",
+        "button": "Delete",
+        "warning": "You are about to delete all the files, this action is irreversible."
+      }
+    },
+    "size": "Size : ",
+    "creationdate": "Creation date : "
+  },
+  "topbar": {
+    "searchBarPlaceholder": "Search",
+    "actionsProfile": {
+      "edit": "Edit profile",
+      "logout": "Logout"
+    }
+  },
+  "system": {
+    "add": {
+      "fail": "Fail",
+      "failDescription": "There was an error adding the system",
+      "success": "Success",
+      "successDescription": "The system was successfully added"
+    },
+    "cards": {
+      "brand": "Brand",
+      "equipments": "Equipments",
+      "modified": "Modified at",
+      "state": "State"
+    },
+    "delete": {
+      "fail": "Fail",
+      "failDescription": "There was an error deleting the system",
+      "success": "Success",
+      "successDescription": "The system was successfully deleted",
+      "alert": "Do you want to delete the system?",
+      "warning": "You are about to delete a system, this action is irreversible."
+    },
+    "filter": {
+      "title": "Filtered by"
+    },
+    "form": {
+      "address": "Address",
+      "authmode": "Authentication mode",
+      "brand": "Brand",
+      "category": "Category",
+      "createdBy": "Created by",
+      "kind": "Type",
+      "managementArea": "Management area",
+      "name": "Name",
+      "password": "Password",
+      "port": "Port",
+      "title": "System",
+      "user": "User"
+    },
+    "title": "System"
+  },
+  "users": {
+    "actions": "Actions",
+    "delete": {
+      "confirm": "Are you sure you want to delete this user ?",
+      "title": "Delete user"
+    },
+    "deleteMultiple": {
+      "confirm": "Are you sure you want to delete these users ?",
+      "title": "Delete users"
+    },
+    "errors": {
+      "descriptionInvalid": "Description must contain between 3 and 20 characters",
+      "nameMissing": "Name is required",
+      "nameInvalid": "Name must contain between 3 and 20 characters",
+      "passwordMissing": "Password is required",
+      "passwordInvalid": "Password must contain between 3 and 20 characters"
+    },
+    "description": "Description",
+    "new": "New user",
+    "password": "Password",
+    "timezone": "Timezone",
+    "title": "List of users",
+    "users": "Users",
+    "language": "Language",
+    "modify": "Modify user",
+    "name": "Name"
+  }
+}

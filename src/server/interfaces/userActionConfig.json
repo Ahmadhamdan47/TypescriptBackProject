@@ -1,0 +1,255 @@
+{
+  "userActionsToLog": [
+    {
+      "name": "POST:/scheduledJobs/",
+      "path": "/scheduledJobs/",
+      "actionName": "Create Scheduled Job",
+      "actionType": "create",
+      "actionObject": "scheduledjob",
+      "description": "created a new scheduled job",
+      "securityAction": true
+    },
+
+    {
+      "name": "POST:/users/",
+      "path": "/users/",
+      "actionName": "Create User",
+      "actionType": "create",
+      "actionObject": "user",
+      "description": "created a new user",
+      "securityAction": false
+    },
+    {
+      "name": "PUT:/users/",
+      "path": "/users/",
+      "actionName": "Update User",
+      "actionType": "modify",
+      "actionObject": "user",
+      "description": "updated an existing user",
+      "securityAction": false,
+      "excludedAttributes": ["description"],
+      "maskedAttributes": ["password"]
+    },
+    {
+      "name": "DELETE:/users/",
+      "path": "/users/",
+      "actionName": "Delete User",
+      "actionType": "delete",
+      "actionObject": "user",
+      "description": "deleted a user",
+      "securityAction": false
+    },
+    {
+      "name": "DELETE:/home/",
+      "path": "/home/",
+      "actionName": "Logout",
+      "actionType": "delete",
+      "actionObject": "session",
+      "description": "has logged out",
+      "securityAction": true
+    },
+    {
+      "name": "POST:/roles/",
+      "path": "/roles/",
+      "actionName": "Create Role",
+      "actionType": "create",
+      "actionObject": "role",
+      "description": "created a new role",
+      "securityAction": false
+    },
+    {
+      "name": "PUT:/roles/",
+      "path": "/roles/",
+      "actionName": "Update Role",
+      "actionType": "modify",
+      "actionObject": "role",
+      "description": "updated a role",
+      "securityAction": false,
+      "excludedAttributes": ["description"]
+    },
+    {
+      "name": "DELETE:/roles/",
+      "path": "/roles/",
+      "actionName": "Delete Role",
+      "actionType": "delete",
+      "actionObject": "role",
+      "description": "deleted a role",
+      "securityAction": false
+    },
+    {
+      "name": "POST:/roles/filter",
+      "path": "/roles/filter",
+      "actionName": "Filter Roles",
+      "actionType": "filter",
+      "actionObject": "role",
+      "description": "filtered roles",
+      "securityAction": false
+    },
+    {
+      "name": "POST:/users/linkRole",
+      "path": "/users/linkRole",
+      "actionName": "Link Role",
+      "actionType": "modify",
+      "actionObject": "user",
+      "description": "linked role to users",
+      "securityAction": true
+    },
+    {
+      "name": "POST:/systems/",
+      "path": "/systems/",
+      "actionName": "Create System",
+      "actionType": "Create",
+      "actionObject": "system",
+      "description": "  created a new system ",
+      "securityAction": false
+    },
+    {
+      "name": "PUT:/systems/",
+      "path": "/systems/",
+      "actionName": "update system",
+      "actionType": "modify",
+      "actionObject": "system",
+      "description": "  updated an existing system ",
+      "securityAction": false,
+      "excludedAttributes": ["brand", "createdBy", "updatedBy"],
+      "maskedAttributes": ["password"]
+    },
+    {
+      "name": "DELETE:/systems/:id",
+      "path": "/systems/:id",
+      "actionName": "delete system",
+      "actionType": "delete",
+      "actionObject": "system",
+      "description": "deleted a system ",
+      "securityAction": false
+    },
+    {
+      "name": "POST:/systems/filter",
+      "path": "/systems/filter",
+      "actionName": "filter systems",
+      "actionType": "filter",
+      "actionObject": "system",
+      "description": "  filtered systems",
+      "securityAction": false
+    },
+    {
+      "name": "POST:/systems/subscribe",
+      "path": "/systems/subscribe",
+      "actionName": "subscribe system",
+      "actionType": "subcribe",
+      "actionObject": "system",
+      "description": "  subscribed to a system",
+      "securityAction": false
+    },
+    {
+      "name": "POST:/notifBindingKeys/",
+      "path": "/notifBindingKeys/",
+      "actionName": "create notifBindingKey",
+      "actionType": "create",
+      "actionObject": "notifBindingKey",
+      "description": "  created a new notifBindingKey",
+      "securityAction": false
+    },
+    {
+      "name": "POST:/notifBindingKeys/:id",
+      "path": "/notifBindingKeys/:id",
+      "actionName": "bind equipments",
+      "actionType": "bind",
+      "actionObject": "notifBindingKey",
+      "description": "  binded equipments to a notifBindingKey",
+      "securityAction": false
+    },
+    {
+      "name": "PUT:/notifBindingKeys/",
+      "path": "/notifBindingKeys/",
+      "actionName": "update notifBindingKey",
+      "actionType": "modify",
+      "actionObject": "notifBindingKey",
+      "description": " updated an existing notifBindingKey",
+      "securityAction": false
+    },
+    {
+      "name": "DELETE:/notifBindingKeys/",
+      "path": "/notifBindingKeys/",
+      "actionName": "delete notifBindingKey",
+      "actionType": "delete",
+      "actionObject": "notifBindingKey",
+      "description": "  deleted a notifBindingKey",
+      "securityAction": false
+    },
+    {
+      "name": "POST:/notifMessages/",
+      "path": "/notifMessages/",
+      "actionName": "send notifMessage",
+      "actionType": "send",
+      "actionObject": "notifMessage",
+      "description": "  sent a notifMessage",
+      "securityAction": false
+    },
+    {
+      "name": "PUT:/notifMessages/",
+      "path": "/notifMessages/",
+      "actionName": "insert notifMessage",
+      "actionType": "insert",
+      "actionObject": "notifMessage",
+      "description": "  inserted a notifMessage",
+      "securityAction": false,
+      "maskedAttributes": ["sender"]
+    },
+    {
+      "name": "DELETE:/notifMessages/",
+      "path": "/notifMessages/",
+      "actionName": "delete notifMessage",
+      "actionType": "delete",
+      "actionObject": "notifMessage",
+      "description": "  deleted a notifMessage",
+      "securityAction": false
+    },
+    {
+      "name": "POST:/databases/restore",
+      "path": "/databases/restore",
+      "actionName": "Restore Database",
+      "actionType": "restore",
+      "actionObject": "database",
+      "description": "restored a database",
+      "securityAction": false
+    },
+    {
+      "name": "POST:/databases/backup",
+      "path": "/databases/backup",
+      "actionName": "Backup Database",
+      "actionType": "backup",
+      "actionObject": "database",
+      "description": "backed up a database",
+      "securityAction": false
+    },
+    {
+      "name": "POST:/scheduledJobs/",
+      "path": "/scheduledJobs/",
+      "actionName": "Create Scheduled Job",
+      "actionType": "create",
+      "actionObject": "scheduledjob",
+      "description": "created a new scheduled job",
+      "securityAction": true
+    },
+    {
+      "name": "PUT:/scheduledjobs/",
+      "path": "/scheduledjobs/",
+      "actionName": "Update Scheduled Job",
+      "actionType": "modify",
+      "actionObject": "scheduledjob",
+      "description": "updated an existing scheduled job",
+      "securityAction": false,
+      "excludedAttributes": ["description"]
+    },
+    {
+      "name": "DELETE:/scheduledjobs/",
+      "path": "/scheduledjobs/",
+      "actionName": "Delete Scheduled Job",
+      "actionType": "delete",
+      "actionObject": "scheduledjob",
+      "description": "deleted a scheduled job",
+      "securityAction": false
+    }
+  ]
+}

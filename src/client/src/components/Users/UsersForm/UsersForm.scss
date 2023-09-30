@@ -1,0 +1,77 @@
+@import "../../../styles/main-style.scss"; // Import global styles -> can be overkill just for castel color
+
+input,
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.form-root {
+  width: 20vw;
+  margin-top: 3rem;
+}
+
+.form-field {
+  display: grid;
+  margin-bottom: 1.5rem;
+}
+
+.label-message-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.form-label {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.form-message {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.form-input,
+.form-textarea {
+  background-color: white;
+  color: black;
+  width: 100%;
+  padding: 0 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  font-size: 1rem;
+  box-shadow: 0 0 0 1px black;
+}
+
+.form-input {
+  height: 35px;
+}
+
+.form-textarea {
+  height: 100px;
+  resize: none;
+}
+
+.form-submit {
+  background-color: white;
+  color: $castel-color;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 500;
+  height: 35px;
+  width: 100%;
+  box-shadow: 0 1px 5px black;
+}
+.form-submit:hover {
+  background-color: whitesmoke;
+}
+.form-submit:focus {
+  box-shadow: 0 0 0 2px black;
+}

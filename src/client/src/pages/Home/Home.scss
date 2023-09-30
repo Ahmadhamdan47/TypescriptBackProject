@@ -1,0 +1,16 @@
+$castel-color: #0060a9;
+
+.home-dropdown-container {
+  margin-block: 1.5rem;
+  display: flex;
+}
+
+.home-dropdown-trigger {
+  background-color: $castel-color;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}

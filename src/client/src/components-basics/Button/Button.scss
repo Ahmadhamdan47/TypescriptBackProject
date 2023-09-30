@@ -1,0 +1,25 @@
+@import "../../styles/main-style.scss";
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  gap: 10px;
+  background: $castel-linear;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 20px;
+  height: 40px;
+  width: fit-content;
+  font-size: 20px;
+  cursor: pointer;
+}
+.button-container:hover {
+  color: $castel-color;
+  background: white;
+  border: 2px solid $castel-color;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}

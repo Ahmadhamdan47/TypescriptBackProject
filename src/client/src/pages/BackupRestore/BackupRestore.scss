@@ -1,0 +1,10 @@
+.backup-container {
+  display: flex;
+  flex-direction: column;
+
+  .backup-list-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,102 @@
+@import "../../styles/main-style.scss";
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.systemList-container {
+  @include flex-center;
+  flex-direction: column;
+  margin: 20px;
+  .filtersContainer {
+    display: flex;
+    align-items: center;
+
+    .checkboxFilters {
+      display: flex;
+      align-items: center;
+
+      .checkbox-filter-icon {
+        @include flex-center;
+        background: none;
+        color: black;
+        padding: 15px;
+        border: none;
+        border-radius: 20px;
+        height: 40px;
+        width: fit-content;
+        font-size: 20px;
+        cursor: pointer;
+
+        .CheckboxRoot {
+          @include flex-center;
+          width: 20px;
+          height: 20px;
+          border-radius: 6px;
+          background-color: none;
+          border: 2px solid $castel-color;
+        }
+
+        .CheckboxIndicator {
+          color: $castel-color;
+        }
+      }
+    }
+  }
+
+  .system-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .system-title {
+      display: flex;
+      justify-content: center;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: $castel-color;
+    }
+
+    .system-content {
+      justify-content: start;
+      color: $castel-color;
+
+      .status-systems-cards {
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px;
+        margin: 8px;
+        overflow: hidden;
+        .state-system-title {
+          display: flex;
+        }
+        .state-system {
+          display: flex;
+          color: white;
+        }
+      }
+      h4 {
+        font-size: 0.6em;
+      }
+      h2 {
+        display: flex;
+        font-weight: bold;
+        justify-content: center;
+        font-size: 1em;
+      }
+    }
+    .system-actions {
+      display: flex;
+      justify-content: space-evenly;
+
+      color: $castel-color;
+      .action {
+        &:hover {
+          transform: scale(1.5);
+        }
+      }
+    }
+  }
+}

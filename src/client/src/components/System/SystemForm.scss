@@ -1,0 +1,55 @@
+@import "../../styles/main-style.scss";
+
+input,
+button {
+  all: unset;
+  box-sizing: border-box;
+}
+
+.form-root-system {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-field-system {
+    width: 30vw;
+    display: grid;
+    margin: 0.2rem 0 0.2rem 0;
+    .select-input {
+      padding: 4px;
+      border-radius: 20px;
+
+      cursor: pointer;
+
+      .select-db-option {
+        background-color: $castel-color;
+      }
+    }
+    .select-input[disabled] {
+      background-color: #727272;
+      color: #ffffff;
+      cursor: not-allowed;
+    }
+    .input-form-system {
+      background-color: white;
+      color: black;
+      padding: 0 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      font-size: 1rem;
+    }
+
+    .input-form-system[disabled] {
+      background-color: #727272;
+      color: #ffffff;
+      cursor: not-allowed;
+    }
+    .FormMessage {
+      font-size: 13px;
+      color: white;
+      opacity: 0.8;
+    }
+  }
+}
